@@ -1,8 +1,5 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/tienda-strips.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
