@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://lh3.googleusercontent.com data:; connect-src 'self' https://gmedryyxhbbkrbaqhlpu.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<title>Strips Hockey | High Performance Overgrips</title>
+<link rel="icon" type="image/png" sizes="32x32" href="Img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="Img/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Img/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- TopNavBar -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <div class="brand">STRIPS HOCKEY</div>
+        <div class="nav-links">
+            <a href="#inicio" class="nav-link is-active">Inicio</a>
+            <a href="#productos" class="nav-link">Productos</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+        <div class="nav-actions">
+            <button id="btn-mi-cuenta" class="btn-account">
+                <span class="material-symbols-outlined">person</span>
+                <span id="texto-btn-cuenta">Iniciar Sesión</span>
+            </button>
+            <div id="btn-abrir-carrito" class="cart-button">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                <span id="contador-carrito" class="cart-count">0</span>
+            </div>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <ul id="menu-movil" class="mobile-menu">
+        <li><a href="#inicio" class="mobile-link">Inicio</a></li>
+        <li><a href="#productos" class="mobile-link">Productos</a></li>
+        <li><a href="#contacto" class="mobile-link">Contacto</a></li>
+    </ul>
+</nav>
+
+<main id="inicio" class="seccion-scroll">
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+            <img class="hero-img" alt="Strips Hockey Hero Background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkl8zoSNnWlcFaW23ozavY4kOkzLahYo7qsacUlerA-Snmh-EiJtVln2ZKAqqbzNObXnX9fdekDRfVNDPoG6kvUhAZY89kDv5JwMZncu4XRa_0DLnIO1Ru21uOm0l1IXuo9ngB8EgHZPKPlhb_CjRydUf71MT0vbdfueuAaouGLlSIupftvbuq7REjyyEHh72eOMoz_1jVOO8x6ynzkHnoJpVIGhCfbz_XOC4gXMl0DYbuEWip1yr1KpeRtU0-efuU0o_Y9iDhjVlu">
+        </div>
+        <div class="hero-content">
+            <span class="badge">New Performance Line</span>
+            <h1 class="hero-title">Elevá tu juego con el <span class="accent">agarre perfecto.</span></h1>
+            <p class="hero-text">Overgrips diseñados para resistir y darte el máximo control en la cancha, sin importar el clima.</p>
+            <div class="hero-actions">
+                <a class="btn-primary" href="#productos">
+                    Ver Catálogo
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-slant"></div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><span class="material-symbols-outlined">security</span></div>
+                <h3 class="benefit-title">Máxima Durabilidad</h3>
+                <p class="benefit-text">Materiales que aguantan el desgaste del entrenamiento diario. Desarrollados para la fricción constante.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><span class="material-symbols-outlined">straighten</span></div>
+                <h3 class="benefit-title">Ajuste Preciso</h3>
+                <p class="benefit-text">Medidas exactas (1.44m x 4cm) para que el encintado quede impecable.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><span class="material-symbols-outlined">pan_tool</span></div>
+                <h3 class="benefit-title">Confort y Control</h3>
+                <p class="benefit-text">Textura que evita el deslizamiento en los momentos clave del partido.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section id="productos" class="products seccion-scroll">
+        <div class="products-inner">
+            <div class="section-head">
+                <h2 class="section-title">Elegí tu estilo.</h2>
+                <p class="section-subtitle">Conocé nuestra línea completa y dale personalidad a tu palo.</p>
+            </div>
+            <div class="products-grid">
+
+                <div class="product-card" data-code="negro-classic">
+                    <div class="product-image">
+                        <img alt="Grip Negro Classic" src="https://lh3.googleusercontent.com/aida/AP1WRLtB9ztbmXWctFMDWcPt2Cgf_EVVf8_iHd6NukAMOWl27UuqM4iGjYsVbiXJSYWBM7kEXvRhhFzur3-PtGKn1mUfbhA7kZiUGwbPuwL_qw82vY4BcfR3BJhWWUque4PVH6ivwQbf0Bt5hri6Fzkcw2Tp937bL94DnhGhLfYDIhdqvttTBvNsULDvmorQy1JCPH5mOP9NecnTNEY1jgHVvuEs6HmfgUtUDTyvAOMs8GA8H_QzErVuRU6vKuA">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Negro <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="product-card" data-code="azul-classic">
+                    <div class="product-image">
+                        <img alt="Grip Azul Classic" src="https://lh3.googleusercontent.com/aida/AP1WRLsWgeNmJrRbqEalYVehPHxYNnV6RdSlItAwqKQ1-fuYI5-OEDIjd3CUTx8hJcbq9qBKVAH6-gk76wmEpFnKu9EsNoYl9zmtHbH3OcQMlN8kpcGmc5X4uP-lFhxMrvn7uCO0a58a3_uRK3aw9uqtyFHct32HqhH-C4kzL6uN_6AO_h9nqMzjNQ1NuU0QiLyyC7_nLXCQdX8TjUXBarew0BmwLipChRGBjXLfczff9EgzRgjbVmF7sXdeELJ6">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Azul <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="product-card" data-code="verde-classic">
+                    <div class="product-image">
+                        <img alt="Grip Verde Classic" src="/Img/screen.png">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Verde <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="product-card" data-code="rosa-classic">
+                    <div class="product-image">
+                        <img alt="Grip Rosa Soft" src="https://lh3.googleusercontent.com/aida/AP1WRLuF4FL-ngxErLjn_7oCzhVsacrNEMZmQ9ER2qF_kNnIzZ7wSBJ5NDc-tQHLEL0xQVbisEKn97TZ1c9K4LAM6qN1G5S8ijmQecr6WZM2wAu8P0EYQ07WHR-0Bi--AW1cSKCG15X6ZnVc5aRI-Ecru0ZwYmfemAiGsBMFS2_OnoyC7p8OkNs88elwfNmJFsGUjTo7ysjVUYF4si4TMB7weVcp_B8a28b4tEYiUzNJQxElW-cY81XJWGsDirum">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Rosa <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="product-card" data-code="beige-classic">
+                    <div class="product-image">
+                        <img alt="Grip Beige Classic" src="https://lh3.googleusercontent.com/aida/AP1WRLsuLeBYba9MxQq-HhH-7tTZEI_0hEdFKM6h9elubayfXU9ZdBbgr5YMrbyVoyPx3LJ9g0vWvbIUxtwW_D075exQs7rpc_N6LV_MmWnNXN9n1lMBlFtD91m1nvRwrmKo0nnZe4QZUERk5FRiHL_IYvH11WtF6TwpjerC026zJcdAVq1e6lIAfljEMltS1BrZOyxJgAT0NtvTrSaZOCUzxnRUZlTIAEkP6svQWMDx3c1fGgkBzDTO164Uido">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Beige <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="product-card" data-code="rojo-classic">
+                    <div class="product-image">
+                        <img alt="Grip Rojo Classic" src="https://lh3.googleusercontent.com/aida/AP1WRLuoM3ErsM7KborCneRuzzFUCd06T3oGQy6Wi0JNlIekx-pfqdcjwecWKRqSR_VcdUZhh4DJjU-t7WlvuoEYE3XI93hIHNCTlZBXjmzvErGBVcGnE7HD6OeztfQChD3sq4rO1kx1QWksVJqXDZPoii0RiKXYqlzv0etLCInxD3IFpayneNkjBPLWPpM3NXvnGr_ZZmaiSPPMfDgrIa-gtRfGw3OiVKsxAErcmZNKzKpaQOQJhGVeZHnoExD2">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Rojo <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="product-card" data-code="turquesa-classic">
+                    <div class="product-image">
+                        <img alt="Grip Turquesa Classic" src="https://lh3.googleusercontent.com/aida/AP1WRLuRaGGvTl9doIgycHIwDxsyjCN06GeDxrX8vR0DJWWqBVn2v8yuTw1twZHQHpAtNNAqzwopRj4INHXkYKnoMfpiYzrdNpysjpEmjx7ET8Ug-kxtMssCFCn6YaRB-ZVuEMF6xsxzH5lwnA8R5w1G3BGP_4lUimawWLNgeHsywGoG5q-REZdB18HM13bXLYKloNjudJmAHrGZuSSGHuNLkoDLNLRD8d-6yF1dWDBfEW-RfhxZ_MvDtiynM2Mz">
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Turquesa <span class="product-variant">Classic</span></h4>
+                        <span class="product-price">$7.500</span>
+                    </div>
+                    <button class="btn-add">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        Agregar al carrito
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust/Logistics Section -->
+    <section class="trust">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon"><span class="material-symbols-outlined">local_shipping</span></div>
+                <p class="trust-title">Envíos a todo el país</p>
+                <p class="trust-text">Comprá online y recibí donde estés.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><span class="material-symbols-outlined">store</span></div>
+                <p class="trust-title">Punto de retiro</p>
+                <p class="trust-text">Retirá tu pedido sin cargo en Paraná, Entre Ríos.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><span class="material-symbols-outlined">chat</span></div>
+                <p class="trust-title">Ventas por mayor</p>
+                <p class="trust-text">¿Dudas? Escribinos a nuestro Instagram @Strips.parana.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="contacto" class="site-footer seccion-scroll">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <span class="footer-logo">STRIPS HOCKEY</span>
+            <p class="footer-desc">La mejor tecnología en overgrips para jugadores de alto rendimiento. Diseñado por y para deportistas.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-heading">Información</h4>
+            <ul class="footer-links">
+                <li><button class="footer-link" data-info="envios">Envíos a todo el país</button></li>
+                <li><button class="footer-link" data-info="retiro">Retiro en local</button></li>
+                <li><button class="footer-link" data-info="mayorista">Contacto mayorista</button></li>
+                <li><button class="footer-link" data-info="pago">Medios de pago</button></li>
+            </ul>
+        </div>
+        <div class="footer-col"></div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Strips Hockey. Professional Grade Gear.</p>
+        <div class="footer-pay">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="material-symbols-outlined">qr_code_2</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Carrito -->
+<div id="cart-overlay" class="cart-overlay hidden"></div>
+<aside id="cart-panel" class="cart-panel">
+    <div class="cart-header">
+        <h2 class="cart-title"><span class="material-symbols-outlined">shopping_bag</span> Tu Pedido</h2>
+        <button id="close-cart" class="cart-close"><span class="material-symbols-outlined">close</span></button>
+    </div>
+
+    <div id="cart-items" class="cart-items">
+        <div class="cart-empty">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <p>El carrito está vacío</p>
+        </div>
+    </div>
+
+    <div class="cart-footer">
+        <div class="shipping">
+            <h4 class="shipping-heading">Método de entrega</h4>
+            <div class="shipping-options">
+                <label class="shipping-option is-selected" id="label-retiro">
+                    <input type="radio" name="tipo_envio" value="Retiro en Paraná" checked>
+                    <div class="shipping-option-text">
+                        <p class="shipping-option-title">Retiro en Paraná</p>
+                        <p class="shipping-option-sub">Sin cargo. Coordinamos por chat.</p>
+                    </div>
+                </label>
+                <label class="shipping-option" id="label-correo">
+                    <input type="radio" name="tipo_envio" value="Envío por Correo">
+                    <div class="shipping-option-text">
+                        <p class="shipping-option-title">Envío por Correo</p>
+                        <p class="shipping-option-sub">Costo exacto a coordinar por WhatsApp luego de cerrar el pedido.</p>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="cart-row">
+            <span>Subtotal:</span>
+            <span id="cart-subtotal" class="cart-subtotal">$0</span>
+        </div>
+
+        <div class="discount-box">
+            <p class="discount-label"><span class="material-symbols-outlined">local_offer</span> 10% OFF por Transferencia</p>
+            <div class="discount-total">
+                <span>Total final:</span>
+                <span id="cart-total-transferencia" class="discount-amount">$0</span>
+            </div>
+        </div>
+
+        <button id="btn-transferencia" class="btn-checkout">Pagar con Transferencia</button>
+        <button id="btn-mercadopago" class="btn-mp">Pagar con MercadoPago</button>
+    </div>
+</aside>
+
+<!-- Modal Cuenta -->
+<div id="modal-cuenta" class="modal">
+    <div class="modal-box" id="caja-cuenta">
+        <div class="modal-header">
+            <h3 id="modal-titulo" class="modal-title"><span class="material-symbols-outlined">person</span> Mi Cuenta</h3>
+            <button id="cerrar-modal-cuenta" class="modal-close"><span class="material-symbols-outlined">close</span></button>
+        </div>
+
+        <div class="tabs">
+            <button id="tab-login" class="tab is-active">Ingresar</button>
+            <button id="tab-registro" class="tab">Registrarme</button>
+        </div>
+
+        <p id="modal-descripcion" class="modal-desc">Iniciá sesión o creá tu cuenta para poder finalizar tus compras.</p>
+
+        <div class="form-fields">
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="email-cuenta" class="input" placeholder="tu@email.com" maxlength="254" autocomplete="email">
+            </div>
+            <div id="div-pass" class="form-group">
+                <label id="label-pass" class="form-label">Contraseña</label>
+                <input type="password" id="pass-cuenta" class="input" placeholder="••••••••" maxlength="128" autocomplete="current-password">
+            </div>
+            <div id="div-confirm-pass" class="form-group hidden">
+                <label class="form-label">Confirmar Contraseña</label>
+                <input type="password" id="pass-confirm-cuenta" class="input" placeholder="••••••••" maxlength="128" autocomplete="new-password">
+            </div>
+        </div>
+
+        <div id="div-recuperar-link" class="recuperar-link">
+            <button id="btn-olvide-pass" class="link-btn">¿Olvidaste tu contraseña?</button>
+        </div>
+
+        <button id="btn-ingresar-cuenta" class="btn-block">Ingresar</button>
+        <p id="error-cuenta" class="error-text hidden"></p>
+    </div>
+</div>
+
+<!-- Modal Info -->
+<div id="modal-info" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="info-titulo" class="modal-title"><span class="material-symbols-outlined">info</span> Información</h3>
+            <button id="cerrar-modal-info" class="modal-close"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <p id="info-texto" class="modal-desc"></p>
+    </div>
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
