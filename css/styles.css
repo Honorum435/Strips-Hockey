@@ -438,6 +438,23 @@ main { padding-top: 64px; }
 .btn-add .material-symbols-outlined { font-size: 20px; }
 .btn-add.is-added { background-color: var(--primary-fixed); color: var(--on-primary-fixed); }
 
+/* Tarjetas de paquetes surtidos: cuadrícula 2×2 de imágenes */
+.product-image.pack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    padding: 12px;
+}
+.product-image.pack-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    transition: transform 0.5s ease;
+}
+.product-card:hover .product-image.pack-grid img { transform: scale(1.05); }
+
 /* ============================================================
    TRUST / LOGÍSTICA
    ============================================================ */
