@@ -349,6 +349,7 @@ main { padding-top: 64px; }
 .products-inner { padding: 0 var(--margin-desktop); }
 
 .section-head { margin-bottom: 64px; }
+.combo-head { margin-top: 80px; }
 .section-title {
     font-family: var(--font-head);
     font-size: 48px;
