@@ -13,14 +13,12 @@ const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let usuarioLogueado = null;
 let estadoModal = 'login';
 
-const MINIMO_MAYORISTA = 30;
 const CANTIDAD_MAXIMA_POR_ITEM = 999;
 const numeroWhatsApp = "5493435323222"; // RECORDÁ CAMBIAR ESTO POR TU NÚMERO
 
-// Precios de respaldo por si la base de datos no responde (la página sigue usable).
+// Precio de respaldo por si la base de datos no responde (la página sigue usable).
 // Los precios reales se cargan desde Supabase en cargarCatalogo().
-const PRECIO_MINORISTA_FALLBACK = 7500;
-const PRECIO_MAYORISTA_FALLBACK = 4500;
+const PRECIO_MINORISTA_FALLBACK = 9000;
 
 // Catálogo cargado desde la base de datos: code -> { nombre, retail, wholesale }
 let catalogo = new Map();
@@ -311,18 +309,10 @@ const codigosEnPagina = new Set(
     Array.from(document.querySelectorAll('.product-card[data-code]')).map(t => t.dataset.code)
 );
 
-// Devuelve el precio unitario de un producto según si el pedido es mayorista o no.
-// Usa el catálogo de la base de datos y cae a los precios de respaldo si hace falta.
-function precioUnitario(code, esMayorista) {
+function precioUnitario(code) {
     const prod = catalogo.get(code);
-    if (prod) return esMayorista ? prod.wholesale : prod.retail;
-    return esMayorista ? PRECIO_MAYORISTA_FALLBACK : PRECIO_MINORISTA_FALLBACK;
-}
-
-// El precio mayorista de referencia que se muestra en los avisos del carrito
-function precioMayoristaReferencia() {
-    for (const prod of catalogo.values()) return prod.wholesale;
-    return PRECIO_MAYORISTA_FALLBACK;
+    if (prod) return prod.retail;
+    return PRECIO_MINORISTA_FALLBACK;
 }
 
 // Carga nombres y precios desde la base de datos y los refleja en las tarjetas
@@ -415,7 +405,6 @@ if (fondoCarrito) fondoCarrito.addEventListener('click', cerrarCarrito);
 function actualizarVistaCarrito() {
     if (!contenedorItems) return;
     let cantidadTotalItems = carrito.reduce((suma, item) => suma + item.cantidad, 0);
-    let esMayorista = cantidadTotalItems >= MINIMO_MAYORISTA;
     let subtotal = 0;
 
     const cartSub = document.getElementById('cart-subtotal');
@@ -432,22 +421,8 @@ function actualizarVistaCarrito() {
     } else {
         let html = '';
 
-        const mayoristaRef = precioMayoristaReferencia();
-        if (esMayorista) {
-            html += `
-                <div class="cart-notice is-wholesale">
-                    <span class="material-symbols-outlined">loyalty</span>
-                    ¡Descuento por volumen activado! ($${mayoristaRef.toLocaleString('es-AR')} c/u)
-                </div>`;
-        } else {
-            html += `
-                <div class="cart-notice is-info">
-                    Agregá ${MINIMO_MAYORISTA - cantidadTotalItems} unidades más para desbloquear el precio mayorista de $${mayoristaRef.toLocaleString('es-AR')}.
-                </div>`;
-        }
-
         carrito.forEach((item, index) => {
-            const precioAplicado = precioUnitario(item.code, esMayorista);
+            const precioAplicado = precioUnitario(item.code);
             const precioTotalFila = precioAplicado * item.cantidad;
             subtotal += precioTotalFila;
 
@@ -594,8 +569,6 @@ async function enviarPedido(medioDePago, botonPagar) {
         }
 
         const pedido = data[0];
-        let cantidadTotalItems = carrito.reduce((suma, item) => suma + item.cantidad, 0);
-        let esMayorista = cantidadTotalItems >= MINIMO_MAYORISTA;
         const conDescuento = medioDePago === 'transferencia';
 
         let textoMensaje = "¡Hola Strips Hockey! 🏑\n";
@@ -603,13 +576,9 @@ async function enviarPedido(medioDePago, botonPagar) {
         textoMensaje += `*Entrega:* ${tipoEnvioElegido}\n\n`;
 
         if (conDescuento) {
-            textoMensaje += esMayorista
-                ? "Quiero abonar por transferencia (*CANTIDAD MAYORISTA*):\n\n"
-                : "Quiero abonar por transferencia (10% OFF):\n\n";
+            textoMensaje += "Quiero abonar por transferencia (10% OFF):\n\n";
         } else {
-            textoMensaje += esMayorista
-                ? "Quiero abonar por MercadoPago (*CANTIDAD MAYORISTA*):\n\n"
-                : "Quiero abonar por MercadoPago:\n\n";
+            textoMensaje += "Quiero abonar por MercadoPago:\n\n";
         }
 
         carrito.forEach(item => {
