@@ -86,7 +86,7 @@ const contenidosInfo = {
     'envios': { titulo: "Envíos a todo el país", info: "Hacemos envíos a toda Argentina por correo privado o encomienda. Una vez realizada la compra, te contactamos por WhatsApp para pasarte el presupuesto y coordinar el despacho." },
     'retiro': { titulo: "Retiro en local", info: "Podés retirar tu pedido sin cargo en nuestro local ubicado en <b>Paraná, Entre Ríos</b>. Una vez que confirmemos tu compra, te enviaremos la dirección exacta y los horarios disponibles." },
     'mayorista': { titulo: "Contacto Mayorista", info: "¡Queremos ser parte de tu club o comercio! Escribinos directamente al WhatsApp o registrate en nuestra web." },
-    'pago': { titulo: "Medios de pago", info: "Aceptamos <b>Transferencia Bancaria</b> (obteniendo un 10% de descuento automático) y todos los medios de pago a través de <b>Mercado Pago</b>." }
+    'pago': { titulo: "Medios de pago", info: "Aceptamos <b>Transferencia Bancaria</b> y todos los medios de pago a través de <b>Mercado Pago</b>." }
 };
 
 function abrirInfo(seccion) {
@@ -452,9 +452,7 @@ function actualizarVistaCarrito() {
 
         contenedorItems.innerHTML = html;
 
-        const totalConDescuento = subtotal * 0.90;
         if (cartSub) cartSub.innerText = `$${subtotal.toLocaleString('es-AR')}`;
-        if (cartTot) cartTot.innerText = `$${totalConDescuento.toLocaleString('es-AR')}`;
     }
 
     if (contadorCarrito) contadorCarrito.innerText = cantidadTotalItems;
@@ -569,14 +567,12 @@ async function enviarPedido(medioDePago, botonPagar) {
         }
 
         const pedido = data[0];
-        const conDescuento = medioDePago === 'transferencia';
-
         let textoMensaje = "¡Hola Strips Hockey! 🏑\n";
         textoMensaje += `*Pedido N°${pedido.pedido_id}* de la cuenta: ${usuarioLogueado}\n`;
         textoMensaje += `*Entrega:* ${tipoEnvioElegido}\n\n`;
 
-        if (conDescuento) {
-            textoMensaje += "Quiero abonar por transferencia (10% OFF):\n\n";
+        if (medioDePago === 'transferencia') {
+            textoMensaje += "Quiero abonar por transferencia:\n\n";
         } else {
             textoMensaje += "Quiero abonar por MercadoPago:\n\n";
         }
@@ -585,12 +581,10 @@ async function enviarPedido(medioDePago, botonPagar) {
             textoMensaje += `- ${item.cantidad}x ${item.nombre}\n`;
         });
 
-        textoMensaje += `\n*Subtotal:* $${Number(pedido.pedido_subtotal).toLocaleString('es-AR')}\n`;
-        if (conDescuento) {
-            textoMensaje += `*Total a Transferir:* $${Number(pedido.pedido_total).toLocaleString('es-AR')}\n\n`;
+        textoMensaje += `\n*Total:* $${Number(pedido.pedido_total).toLocaleString('es-AR')}\n\n`;
+        if (medioDePago === 'transferencia') {
             textoMensaje += "Espero los datos de la cuenta para transferir. ¡Gracias!";
         } else {
-            textoMensaje += `*Total:* $${Number(pedido.pedido_total).toLocaleString('es-AR')}\n\n`;
             textoMensaje += "Espero el link de pago de MercadoPago para abonar. ¡Gracias!";
         }
 
