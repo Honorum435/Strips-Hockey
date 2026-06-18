@@ -11,6 +11,7 @@ const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // --- VARIABLES GLOBALES ---
 let usuarioLogueado = null;
+let nombreUsuario = null;
 let estadoModal = 'login';
 
 const CANTIDAD_MAXIMA_POR_ITEM = 999;
@@ -117,6 +118,8 @@ const btnMiCuenta = document.getElementById('btn-mi-cuenta');
 const textoBtnCuenta = document.getElementById('texto-btn-cuenta');
 const modalCuenta = document.getElementById('modal-cuenta');
 const btnCerrarModal = document.getElementById('cerrar-modal-cuenta');
+const inputNombre = document.getElementById('nombre-cuenta');
+const divNombre = document.getElementById('div-nombre');
 const inputEmail = document.getElementById('email-cuenta');
 const inputPass = document.getElementById('pass-cuenta');
 const inputConfirmPass = document.getElementById('pass-confirm-cuenta');
@@ -152,6 +155,7 @@ function actualizarInterfazUsuario() {
 // Supabase mantiene la sesión y avisa cualquier cambio (login, logout, expiración)
 db.auth.onAuthStateChange((evento, sesion) => {
     usuarioLogueado = sesion && sesion.user ? sesion.user.email : null;
+    nombreUsuario = sesion && sesion.user ? (sesion.user.user_metadata?.nombre || null) : null;
     actualizarInterfazUsuario();
 });
 
@@ -181,6 +185,7 @@ function cerrarModalCuenta() {
     modalCuenta.classList.remove('is-visible');
     setTimeout(() => modalCuenta.classList.remove('is-open'), 300);
     if (errorPass) errorPass.classList.add('hidden');
+    if (inputNombre) inputNombre.value = "";
     if (inputPass) inputPass.value = "";
     if (inputEmail) inputEmail.value = "";
     if (inputConfirmPass) inputConfirmPass.value = "";
@@ -204,6 +209,7 @@ function cambiarPestaña(nuevoEstado) {
         if (modalDesc) modalDesc.innerText = "Iniciá sesión para poder finalizar tus compras.";
         if (labelPass) labelPass.innerText = "Contraseña";
         if (btnIngresar) btnIngresar.innerText = "Ingresar";
+        if (divNombre) divNombre.classList.add('hidden');
         if (divConfirmPass) divConfirmPass.classList.add('hidden');
         if (divRecuperarLink) divRecuperarLink.classList.remove('hidden');
     } else if (estadoModal === 'registro') {
@@ -212,12 +218,14 @@ function cambiarPestaña(nuevoEstado) {
         if (modalDesc) modalDesc.innerText = "Creá tu cuenta. Es obligatorio para poder comprar.";
         if (labelPass) labelPass.innerText = "Crear Contraseña";
         if (btnIngresar) btnIngresar.innerText = "Registrar Cuenta";
+        if (divNombre) divNombre.classList.remove('hidden');
         if (divConfirmPass) divConfirmPass.classList.remove('hidden');
         if (divRecuperarLink) divRecuperarLink.classList.add('hidden');
     } else if (estadoModal === 'recuperar') {
         if (modalTitulo) modalTitulo.innerHTML = `<span class="material-symbols-outlined">key_reset</span> Recuperar Clave`;
         if (modalDesc) modalDesc.innerText = "Ingresá tu mail y te enviamos un enlace para crear una nueva contraseña.";
         if (btnIngresar) btnIngresar.innerText = "Enviar email de recuperación";
+        if (divNombre) divNombre.classList.add('hidden');
         if (divPass) divPass.classList.add('hidden');
         if (divConfirmPass) divConfirmPass.classList.add('hidden');
         if (divRecuperarLink) divRecuperarLink.classList.add('hidden');
@@ -264,6 +272,11 @@ if (btnIngresar) {
                 }
                 cerrarModalCuenta();
             } else if (estadoModal === 'registro') {
+                const nombre = inputNombre ? inputNombre.value.trim() : "";
+                if (!nombre) {
+                    mostrarError("Ingresá tu nombre.");
+                    return;
+                }
                 if (pass.length < 8) {
                     mostrarError("La contraseña debe tener al menos 8 caracteres.");
                     return;
@@ -272,7 +285,11 @@ if (btnIngresar) {
                     mostrarError("Las contraseñas no coinciden.");
                     return;
                 }
-                const { data, error } = await db.auth.signUp({ email: email, password: pass });
+                const { data, error } = await db.auth.signUp({
+                    email: email,
+                    password: pass,
+                    options: { data: { nombre: nombre } }
+                });
                 if (error) {
                     mostrarError(traducirErrorAuth(error));
                     return;
@@ -568,7 +585,7 @@ async function enviarPedido(medioDePago, botonPagar) {
 
         const pedido = data[0];
         let textoMensaje = "¡Hola Strips Hockey! 🏑\n";
-        textoMensaje += `*Pedido N°${pedido.pedido_id}* de la cuenta: ${usuarioLogueado}\n`;
+        textoMensaje += `*Pedido N°${pedido.pedido_id}* de: ${nombreUsuario || usuarioLogueado}\n`;
         textoMensaje += `*Entrega:* ${tipoEnvioElegido}\n\n`;
 
         if (medioDePago === 'transferencia') {
